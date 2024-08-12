@@ -1,17 +1,31 @@
-.sidenav-container {
-  height: 100%;
+// .sidenav-container {
+//   height: 100%;
+// }
+
+// .sidenav {
+//   width: 200px;
+// }
+
+// .sidenav .mat-toolbar {
+//   background: inherit;
+// }
+
+// .mat-toolbar.mat-primary {
+//   position: sticky;
+//   top: 0;
+//   z-index: 1;
+// }
+
+
+mat-toolbar {
+  display: flex;
+  padding: 0 3.5vh;
 }
 
-.sidenav {
-  width: 200px;
-}
+// .content {
+//   padding: 24px;
+// }
 
-.sidenav .mat-toolbar {
-  background: inherit;
-}
-
-.mat-toolbar.mat-primary {
-  position: sticky;
-  top: 0;
-  z-index: 1;
-}
+// mat-sidenav-container {
+//   height: calc(100hv - 64px);
+// }

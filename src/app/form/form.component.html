@@ -1,0 +1,138 @@
+<form [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit()">
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <mat-card-title>Cadastro</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <!-- Código -->
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Codigo" formControlName="codigo">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <!-- Nome Completo -->
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Nome Completo" formControlName="nomeCompleto">
+            @if (addressForm.controls['nomeCompleto'].hasError('required')) {
+              <mat-error>Nome completo é <strong>obrigatório</strong></mat-error>
+            }
+          </mat-form-field>
+        </div>
+        <!-- CPF -->
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="CPF" formControlName="cpf">
+            @if (addressForm.controls['cpf'].hasError('required')) {
+              <mat-error>Campo CPF é <strong>obrigatório</strong></mat-error>
+            }
+          </mat-form-field>
+        </div>
+        <!-- RG -->
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="RG" formControlName="rg">
+            @if (addressForm.controls['rg'].hasError('required')) {
+              <mat-error>Campo RG é <strong>obrigatório</strong></mat-error>
+            }
+          </mat-form-field>
+        </div>
+      </div>
+      <!-- Endereço -->
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <textarea matInput placeholder="Endereço" formControlName="endereco"></textarea>
+            @if (addressForm.controls['endereco'].hasError('required')) {
+              <mat-error>Campo Endereço é <strong>obrigatório</strong></mat-error>
+            }
+          </mat-form-field>
+        </div>
+      </div>
+
+      <!-- Complemento -->
+      <mat-form-field class="full-width">
+        <textarea matInput placeholder="Complemento" formControlName="complemento"></textarea>
+      </mat-form-field>
+
+      <!-- <div class="row">
+        <div class="col">
+          @if (hasUnitNumber) {
+            <mat-form-field class="full-width">
+              <textarea matInput placeholder="Address 2" formControlName="address2"></textarea>
+            </mat-form-field>
+          } @else {
+            <button mat-button type="button" (click)="hasUnitNumber = !hasUnitNumber">
+              + Add C/O, Apt, Suite, Unit
+            </button>
+          }
+        </div>
+      </div> -->
+
+      <div class="row">
+        <!-- Cidade -->
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Cidade" formControlName="cidade">
+            @if (addressForm.controls['cidade'].hasError('required')) {
+              <mat-error>Campo Cidade é <strong>obrigatório</strong></mat-error>
+            }
+          </mat-form-field>
+        </div>
+        <!-- Número -->
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Número" formControlName="numero">
+            @if (addressForm.controls['numero'].hasError('required')) {
+              <mat-error>Campo Número é <strong>obrigatório</strong></mat-error>
+            }
+          </mat-form-field>
+        </div>
+        <!-- Bairro -->
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Bairro" formControlName="bairro">
+            @if (addressForm.controls['bairro'].hasError('required')) {
+              <mat-error>Campo Bairro é <strong>obrigatório</strong></mat-error>
+            }
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-select placeholder="Estado" formControlName="estados">
+              @for (estado of estados; track estado) {
+                <mat-option [value]="estado.abbreviation">{{ estado.name }}</mat-option>
+              }
+            </mat-select>
+            @if (addressForm.controls['estado'].hasError('required')) {
+              <mat-error>Campo Estado é <strong>obrigatório</strong></mat-error>
+            }
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput #postalCode maxlength="5" placeholder="Postal Code" type="number" formControlName="postalCode">
+            <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-radio-group formControlName="shipping">
+            <mat-radio-button value="free">Free Shipping</mat-radio-button>
+            <mat-radio-button value="priority">Priority Shipping</mat-radio-button>
+            <mat-radio-button value="nextday">Next Day Shipping</mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit">Submit</button>
+    </mat-card-actions>
+  </mat-card>
+</form>
